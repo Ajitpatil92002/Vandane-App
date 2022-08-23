@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vandane Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/tailwind.output.css" />
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <script src="/assets/js/init-alpine.js"></script>
+  <script type="application/javascript" src="/tinymce/tinymce.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: "#mytextarea",
+    });
+  </script>
+</head>
+
+<body class="dark:bg-gray-800">
+  <div class="flex bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <%- include("../layouts/sidebar.ejs") %>
+      <div class="flex flex-col flex-1 w-full">
+        <%- include("../layouts/header.ejs") %>
+       <div>
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
+              <div class="px-4 bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-900">
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 text-center dark:text-gray-200">
+                  Edit Temple
+                </h2>
+                <div class="px-4 py-4  border-b bg-white shadow-md dark:bg-gray-800">
+                  <form action="/admin/addTemple" method="post" enctype="multipart/form-data">
+                    <div class="mb-4">
+                      <label class="text-xl text-gray-600 dark:text-gray-300">Title </label></br>
+                      <input type="text" name="title"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        required />
+                    </div>
+                    <div class="mb-4">
+                      <label class="text-xl text-gray-600 dark:text-gray-300">Description</label></br>
+                      <input type="text" name="discription"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        required />
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center space-x-6 mb-8 md:p-6">
+                      <label class="flex flex-col md:flex-row pl-2  items-center md:space-x-6">
+                        <span class="text-sm dark:text-gray-300">Choose thubnail photo</span>
+                        <input type="file" name="thumbnail" id="thubnail" class="pl-2 block mt-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold  dark:text-gray-300
+                        dark:bg-gray-700" accept="image/x-png,image/gif,image/jpeg" />
+                      </label>
+                    </div>
+                    <div class="flex items-center  md:flex-row flex-col space-x-6 mb-8 md:p-6">
+                      <label class="flex flex-col md:flex-row pl-2 items-center md:space-x-6">
+                        <span class="text-sm dark:text-gray-300">Choose gallery photo</span>
+                        <input type="file" name="galleryImages" id="" class="pl-2 block mt-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold  dark:text-gray-300
+                        dark:bg-gray-700" accept="image/x-png,image/gif,image/jpeg" />
+                      </label>
+                    </div>
+
+                    <div class="mb-8">
+
+                      <label class="text-xl text-gray-600 dark:text-gray-300">Content </label></br>
+                      <textarea id="mytextarea" name="content"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray">
+                      </textarea>
+                    </div>
+
+                    <div class="flex p-1">
+                      <select name="status"
+                        class="block mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option>Save and Publish</option>
+                        <option>Save Draft</option>
+                      </select>
+                      <button type="submit"
+                        class="p-3 ml-2 rounded-md bg-blue-500 text-white hover:bg-blue-400">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> 
+      </div>
+  </div>
+</body>
+
+</html>
