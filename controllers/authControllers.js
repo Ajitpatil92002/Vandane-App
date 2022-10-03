@@ -27,8 +27,14 @@ module.exports.register_post = async (req, res) => {
       process.env.JWT_SECRET + user.password,
       { expiresIn: "1h" }
     );
-    sendVerifyEmail(authVerifytoken, email, user._id);
-    res.status(200).json({ msg: "/auth/verifyemail" });
+    let resp = await sendVerifyEmail(authVerifytoken, email, user._id);
+    if (resp === "incorrect email") {
+      let errors = { username: "", email: "", password: "", phone: "" };
+      errors.username = "Username is Already registered";
+      return res.status(400).json({ errors });
+    } else {
+      res.status(200).json({ msg: "/auth/verifyemail" });
+    }
   } catch (err) {
     const errors = handleError(err);
     res.status(400).json({ errors });

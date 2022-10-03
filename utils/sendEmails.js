@@ -27,8 +27,9 @@ module.exports.sendVerifyEmail = (authVerifytoken, email, id) => {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
+        return "incorrect email"
       } else {
-        // return "Check your email to verify ";
+        return "Check your email to verify ";
         console.log("Email has been sent :-", info.response);
       }
     });
@@ -62,8 +63,9 @@ module.exports.sendRestPasswordMail = (authVerifytoken, email, id) => {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
+        return "incorrect email"
       } else {
-        // return "Check your email to verify ";
+        return "Check your email to verify ";
         // console.log("Email has been sent :-", info.response);
       }
     });
