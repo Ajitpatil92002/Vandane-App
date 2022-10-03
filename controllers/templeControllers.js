@@ -1,4 +1,4 @@
-const Temple = require("../models/temple");
+const Temple = require("../models/Temple");
 const convertToSlug = require("../utils/slug");
 const Cloudinary = require("../utils/cloudinary");
 
