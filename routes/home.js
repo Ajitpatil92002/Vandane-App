@@ -1,5 +1,5 @@
 const express = require("express");
-const Temple = require("../models/temple");
+const Temple = require("../models/Temple");
 const AppStats = require("../models/App");
 const { contact_post } = require("../controllers/contactController");
 
