@@ -9,7 +9,7 @@
     "rebuild": "npx tailwindcss -i ./resources/input.css -o ./public/css/app.css --watch"
   },
   "engines": {
-    "node": "v16.14.0"
+    "node": "16.14.0"
   },
   "author": "",
   "license": "ISC",
