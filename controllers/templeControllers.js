@@ -1,7 +1,7 @@
 const Temple = require("../models/temple");
 const convertToSlug = require("../utils/slug");
 const Cloudinary = require("../utils/cloudinary");
-const ImageUpload = require("../utils/imgUpload");
+
 
 module.exports.addTemple_get = async (req, res) => {
   res.render("./adminpages/addTemple");
